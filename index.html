@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeDebate | A Brand of RB-Ventures</title>
+  <meta name="description" content="CodeDebate helps organizations rationalize data assets, build data mesh and AI workflows, optimize FinOps, and scale modernization through intelligent automation.">
+  <style>
+    :root {
+      --turquoise: #15C3B8;
+      --black: #0B0B0B;
+      --white: #FFFFFF;
+      --grey: #6B7280;
+      --surface: #F7F8FA;
+      --divider: rgba(11,11,11,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body { background: var(--white); color: var(--black); line-height: 1.6; }
+
+    header {
+      padding: 0 0 1.2rem 0;
+      text-align: center;
+      border-bottom: 2px solid var(--turquoise);
+      background: linear-gradient(180deg, var(--white) 80%, var(--surface));
+    }
+    header img {
+      height: 60px;
+      margin: 1.2rem auto 0.5rem auto;
+      display: block;
+    }
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      position: relative;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.5rem 0 0.5rem;
+        position: relative;
+      }
+    }
+    .nav-menu {
+      display: flex;
+      flex-direction: row;
+      gap: 1.25rem;
+      list-style: none;
+      margin: 0.5rem 0 0 0;
+      padding: 0.25rem 0.5rem;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      border: 1px solid var(--divider);
+      border-radius: 999px;
+      background: var(--white);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+    .nav-menu li a {
+      color: var(--turquoise);
+      font-weight: 600;
+      font-size: 0.98rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .nav-menu li a:hover {
+      background: var(--turquoise);
+      color: var(--white);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--turquoise);
+      cursor: pointer;
+      margin: 0.5rem 0 0 0;
+    }
+    @media (max-width: 700px) {
+      .nav-toggle {
+        display: block;
+        position: static;
+        align-self: flex-end;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar { padding: 0.5rem 0.5rem 0 0.5rem; }
+      .nav-menu {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        display: none;
+        margin-top: 0.5rem;
+        border-radius: 16px;
+      }
+      .nav-menu.nav-menu-active { display: flex; }
+      .nav-menu li {
+        padding: 0.6rem 0.8rem;
+        text-align: left;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      .nav-toggle { display: block; }
+    }
+
+    section { padding: 2.25rem 1.5rem; max-width: 980px; margin: auto; }
+    .section-surface { background: var(--surface); border: 1px solid var(--divider); border-radius: 14px; padding: 1.25rem 1rem; }
+    h2 {
+      color: var(--turquoise);
+      margin-bottom: 0.6rem;
+      font-size: 1.35rem;
+      padding-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    p { color: var(--grey); margin-bottom: 1rem; }
+    ul { list-style: none; margin-top: 1rem; }
+    section ul li {
+      padding: 0.55rem 0;
+      border-left: 3px solid var(--turquoise);
+      padding-left: 0.75rem;
+      color: var(--black);
+      background: linear-gradient(90deg, rgba(21,195,184,0.06), transparent 55%);
+      border-radius: 4px;
+    }
+    .nav-menu li { border-left: none !important; padding-left: 0; }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem 1.2rem;
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    a { color: var(--turquoise); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (min-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      section { padding: 3rem 1.5rem; }
+    }
+
+    .section-icon { display: inline-flex; align-items: center; justify-content: center; }
+    .section-icon svg {
+      width: 28px; height: 28px; stroke: var(--turquoise); fill: none; stroke-width: 2.2;
+      stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 120;
+      stroke-dashoffset: 120;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: stroke-dashoffset 900ms ease, opacity 600ms ease, transform 600ms ease;
+    }
+    .in-view svg {
+      stroke-dashoffset: 0;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--divider), transparent);
+      margin: 1.6rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="CodeDebate, a brand of RB-Ventures LLC." />
+    <nav class="navbar">
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>
+      About CodeDebate
+    </h2>
+    <div class="section-surface">
+      <p>
+        At CodeDebate, our mission is to help you unlock the full potential of your data and AI assets. We provide expert advisory services in data strategy, AI workflow engineering, and process automation. Our goal is to guide you in making informed decisions, modernizing your approach, and integrating intelligence into your daily operations.
+      </p>
+      <p>
+        Whether you’re looking to rationalize your data, adopt new AI practices, or streamline processes, we’re here to offer clear, actionable advice tailored to your needs. We don’t sell solutions—we empower you to build your own, with confidence and clarity.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 id="services">
+      Our Services
+    </h2>
+    <ul>
+      <li><strong>Data Rationalization & Governance</strong> — We advise you on how to unify your data strategy, establish effective governance, and ensure compliance. Our guidance covers data cataloging, lineage, stewardship, and policy development, helping you make informed decisions and build trust in your data.</li>
+
+      <li><strong>Data Mesh & Fabric Enablement</strong> — We help you understand and adopt distributed data architectures. Through advisory sessions, we clarify concepts like federated governance, secure data sharing, and self-service analytics, so you can break down silos and enable real-time access tailored to your needs.</li>
+
+      <li><strong>FinOps & Cost Optimization</strong> — We provide recommendations to help you optimize cloud and data platform costs. Our advice includes best practices for showback/chargeback, rightsizing, scheduling, and architecture patterns, empowering you to align technology spend with business value.</li>
+
+      <li><strong>AI Workflow Engineering</strong> — We guide you in designing intelligent workflows and integrating AI into your business processes. Our advisory covers generative AI, agentic frameworks, and multi-step orchestration, so you can automate tasks and enhance decision-making with confidence.</li>
+
+      <li><strong>Process Automation</strong> — We advise you on process mapping, automation design, and deployment strategies. Our goal is to help you identify opportunities for efficiency, reduce manual effort, and improve accuracy—without prescribing a one-size-fits-all solution.</li>
+
+      <li><strong>Modernization & Migration</strong> — We support you in planning and executing modernization and migration initiatives. Our advisory helps you assess readiness, minimize risk, and ensure data integrity as you transition to new platforms or cloud environments.</li>
+
+      <li><strong>Workforce Enablement</strong> — We help you and your team build AI fluency and embrace digital tools. Through workshops and coaching, we provide practical advice for change management, digital adoption, and ongoing learning, so you can drive measurable results.</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h2 id="approach">
+      Our Approach
+    </h2>
+    <p>
+      At CodeDebate, our approach is to work alongside you as a trusted advisor. We combine strategy, architecture, and automation expertise to help you move toward a more data-centric, AI-enabled way of working. Here’s how we support you:
+    </p>
+    <ul>
+      <li><strong>Breaking Silos</strong> — We advise you on integrating legacy and modern platforms, enabling seamless data flow and unified access. Our guidance helps you unlock hidden value, reduce technical debt, and enable real-time analytics—always tailored to your context.</li>
+      <li><strong>Data Mesh & Fabric Principles</strong> — We help you understand and implement distributed ownership, discoverability, and interoperability. Our advisory clarifies mesh/fabric strategy and platform engineering, so you can make informed choices for your organization.</li>
+      <li><strong>Unified Governance & Observability</strong> — We guide you in establishing governance, metadata management, and observability across environments. Our advice covers policy definition, monitoring, and reporting, helping you build trust and transparency in your data assets.</li>
+      <li><strong>AI Agents Orchestration</strong> — We advise you on embedding AI agents to orchestrate and accelerate modernization, migration, and remediation tasks. Our support helps you automate repetitive work and optimize resource allocation, with a focus on your unique needs and goals.</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h2 id="contact">
+      Contact
+    </h2>
+    <div class="section-surface">
+      <p>
+        📧 <a href="mailto:info@codedebate.com">info@codedebate.com</a><br/>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 CodeDebate | A brand of <a href="https://www.rb-ventures.com" target="_blank">RB-Ventures LLC.</a> | All rights reserved
+    <script>
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+          }
+        });
+      });
+
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('nav-menu-active');
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+  </footer>
+</body>
+</html>
